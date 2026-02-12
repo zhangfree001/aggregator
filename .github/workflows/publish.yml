@@ -1,0 +1,48 @@
+name: Publish to dist
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"   # 每6小时跑一次
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate
+        run: |
+          mkdir -p dist
+          # 关键：这里用你实际的配置文件路径
+          # 先用默认配置跑通（你也可以换成自己的 configs/config.json）
+          cp subscribe/config/config.default.json my-config.json
+          python subscribe/process.py -s my-config.json
+
+          # 如果 process.py 已经生成了 dist/clash.yaml，这里就不用 cp
+          # 如果生成在别处，你加一行 cp 到 dist/
+          # cp path/to/clash.yaml dist/clash.yaml
+
+      - name: Commit & push
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add dist
+            git commit -m "chore: update dist"
+            git push
+          else
+            echo "No changes"
+          fi
