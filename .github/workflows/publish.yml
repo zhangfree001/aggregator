@@ -24,25 +24,25 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate
-        run: |
-          mkdir -p dist
-          # 关键：这里用你实际的配置文件路径
-          # 先用默认配置跑通（你也可以换成自己的 configs/config.json）
-          cp subscribe/config/config.default.json my-config.json
-          python subscribe/process.py -s my-config.json
-
-          # 如果 process.py 已经生成了 dist/clash.yaml，这里就不用 cp
-          # 如果生成在别处，你加一行 cp 到 dist/
-          # cp path/to/clash.yaml dist/clash.yaml
+       run: |
+        mkdir -p dist
+        cp subscribe/config/config.default.json "$RUNNER_TEMP/my-config.json"
+        python subscribe/process.py -s "$RUNNER_TEMP/my-config.json"
+        ls -al dist || true
 
       - name: Commit & push
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add dist
-            git commit -m "chore: update dist"
-            git push
-          else
-            echo "No changes"
-          fi
+  run: |
+    git config user.name "github-actions[bot]"
+    git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    # 只提交 dist（如果 dist 在 .gitignore 里，你就用 -f）
+    git add -f dist || true
+
+    # 如果没有任何 staged 变更，就正常结束，不报错
+    if git diff --cached --quiet; then
+      echo "No changes in dist, skip commit."
+      exit 0
+    fi
+
+    git commit -m "chore: update dist"
+    git push
