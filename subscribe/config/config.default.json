@@ -1,51 +1,10 @@
 {
-  "domains": [
-    {
-      "name": "",
-      "sub": [],
-      "domain": "",
-      "enable": true,
-      "rename": "",
-      "include": "",
-      "exclude": "",
-      "push_to": [],
-      "ignorede": true,
-      "liveness": true,
-      "rate": 2.5,
-      "count": 2,
-      "coupon": "",
-      "secure": false,
-      "renew": {
-        "account": [
-          {
-            "email": "",
-            "passwd": "",
-            "ticket": {
-              "enable": true,
-              "autoreset": false,
-              "subject": "",
-              "message": "",
-              "level": 1
-            }
-          }
-        ],
-        "plan_id": 3,
-        "package": "",
-        "method": 1,
-        "coupon_code": "",
-        "chatgpt": {
-          "enable": true,
-          "regex": "",
-          "operate": "IN"
-        }
-      }
-    }
-  ],
+  "domains": [],
   "crawl": {
     "enable": true,
     "exclude": "",
-    "threshold": 5,
-    "singlelink": true,
+    "threshold": 1,
+    "singlelink": false,
     "persist": {
       "subs": "",
       "proxies": ""
@@ -57,18 +16,36 @@
     },
     "telegram": {
       "enable": false,
-      "pages": 5,
+      "pages": 1,
       "exclude": "",
       "users": {
         "channel": {
           "include": "",
           "exclude": "",
-          "config": {
-            "rename": ""
-          },
+          "config": { "rename": "" },
           "push_to": []
         }
       }
+    },
+    "twitter": {
+      "enable": false,
+      "users": {
+        "username": {
+          "enable": false,
+          "num": 30,
+          "include": "",
+          "exclude": "",
+          "config": { "rename": "" },
+          "push_to": []
+        }
+      }
+    },
+    "github": {
+      "enable": false,
+      "pages": 1,
+      "push_to": [],
+      "exclude": "",
+      "spams": []
     },
     "google": {
       "enable": false,
@@ -81,77 +58,26 @@
       "enable": false,
       "exclude": "",
       "within": 3,
-      "pages": 5,
+      "pages": 1,
       "notinurl": [],
       "push_to": []
     },
-    "github": {
-      "enable": true,
-      "pages": 2,
-      "push_to": [],
-      "exclude": "",
-      "spams": []
-    },
-    "twitter": {
-      "enable": false,
-      "users": {
-        "username": {
-          "enable": false,
-          "num": 30,
-          "include": "",
-          "exclude": "",
-          "config": {
-            "rename": ""
-          },
-          "push_to": []
-        }
-      }
-    },
-    "repositories": [
-      {
-        "enable": false,
-        "username": "",
-        "repo_name": "",
-        "commits": 3,
-        "exclude": "",
-        "push_to": []
-      }
-    ],
+    "repositories": [],
     "pages": [
       {
         "enable": true,
-        "url": "https://github.com/mermeroo/V2RAY-CLASH-BASE64-Subscription.Links?utm_source=chatgpt.com",
+        "url": "https://github.com/mermeroo/V2RAY-CLASH-BASE64-Subscription.Links",
         "include": "",
         "exclude": "",
         "multiple": true,
         "placeholder": "",
         "start": 1,
         "end": 1,
-        "config": {
-          "rename": ""
-        },
+        "config": { "rename": "" },
         "push_to": []
       }
     ],
-    "scripts": [
-      {
-        "enable": false,
-        "script": "file#function",
-        "params": {
-          "persist": {
-            "fileid": ""
-          },
-          "any": "xxx",
-          "config": {
-            "enable": true,
-            "liveness": true,
-            "exclude": "",
-            "rename": "",
-            "push_to": []
-          }
-        }
-      }
-    ]
+    "scripts": []
   },
   "groups": {
     "default": {
@@ -176,31 +102,9 @@
     "base": "",
     "domain": "",
     "items": {
-      "default-clash": {
-        "username": "",
-        "folderid": "",
-        "fileid": "clash.yaml"
-      },
-      "default-singbox": {
-        "username": "",
-        "folderid": "",
-        "fileid": "singbox.json"
-      },
-      "default-v2ray": {
-        "username": "",
-        "folderid": "",
-        "fileid": "v2ray.txt"
-      },
-      "crawledsubs": {
-        "username": "",
-        "folderid": "",
-        "fileid": "crawledsubs.txt"
-      },
-      "crawledproxies": {
-        "username": "",
-        "folderid": "",
-        "fileid": "crawledproxies.txt"
-      }
+      "default-clash": { "folderid": "", "fileid": "clash.yaml" },
+      "default-singbox": { "folderid": "", "fileid": "singbox.json" },
+      "default-v2ray": { "folderid": "", "fileid": "v2ray.txt" }
     }
   }
 }
