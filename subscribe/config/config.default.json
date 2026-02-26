@@ -41,9 +41,9 @@
       }
     },
     "github": {
-      "enable": false,
+      "enable": true,
       "pages": 1,
-      "push_to": [],
+      "push_to": [default],
       "exclude": "",
       "spams": []
     },
