@@ -3,7 +3,7 @@ name: Publish to dist
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *" # 每 6 小时跑一次
+    - cron: "0 */3 * * *" # 每 3 小时跑一次
 
 permissions:
   contents: write
