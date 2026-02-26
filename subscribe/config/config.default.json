@@ -3,7 +3,7 @@
     {
       "name": "raw-source",
       "sub": [
-        "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/clash/all.yml"
+        ""https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml
       ],
       "domain": "",
       "enable": true,
