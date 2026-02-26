@@ -74,7 +74,7 @@
         "start": 1,
         "end": 1,
         "config": { "rename": "" },
-        "push_to": []
+        "push_to": [default]
       }
     ],
     "scripts": []
