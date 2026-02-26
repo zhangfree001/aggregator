@@ -93,10 +93,10 @@
       "spams": []
     },
     "twitter": {
-      "enable": true,
+      "enable": false,
       "users": {
         "username": {
-          "enable": true,
+          "enable": false,
           "num": 30,
           "include": "",
           "exclude": "",
@@ -120,7 +120,7 @@
     "pages": [
       {
         "enable": true,
-        "url": "",
+        "url": "https://feed.iggv5.com/c/9f61f9b1-d5a5-457a-81c9-84655b4abc63/platform/clash/iGG-iGuge",
         "include": "",
         "exclude": "",
         "multiple": true,
