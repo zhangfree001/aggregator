@@ -1,0 +1,21 @@
+- name: Generate
+  env:
+    LOCAL_BASEDIR: dist
+  run: |
+    set -eux
+    mkdir -p dist
+
+    # 让 remains-default 不再报 “clash.yaml not found”
+    cat > clash.yaml <<'EOF'
+    mixed-port: 7890
+    allow-lan: false
+    mode: rule
+    log-level: info
+    proxies: []
+    proxy-groups: []
+    rules: []
+    EOF
+
+    cp subscribe/config/config.default.json "$RUNNER_TEMP/my-config.json"
+    python subscribe/process.py -s "$RUNNER_TEMP/my-config.json"
+    ls -al dist
