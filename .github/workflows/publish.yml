@@ -3,18 +3,21 @@ name: Publish to dist
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"   # 每6小时跑一次
+    - cron: "0 */6 * * *" # 每 6 小时跑一次
 
 permissions:
   contents: write
 
 jobs:
-  run:
+  publish:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -24,25 +27,25 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate
-       run: |
-        mkdir -p dist
-        cp subscribe/config/config.default.json "$RUNNER_TEMP/my-config.json"
-        python subscribe/process.py -s "$RUNNER_TEMP/my-config.json"
-        ls -al dist || true
+        run: |
+          mkdir -p dist
+          cp subscribe/config/config.default.json "$RUNNER_TEMP/my-config.json"
+          python subscribe/process.py -s "$RUNNER_TEMP/my-config.json"
+          ls -al dist || true
 
       - name: Commit & push
-  run: |
-    git config user.name "github-actions[bot]"
-    git config user.email "github-actions[bot]@users.noreply.github.com"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    # 只提交 dist（如果 dist 在 .gitignore 里，你就用 -f）
-    git add -f dist || true
+          # dist 通常在 .gitignore 里，因此这里强制添加
+          git add -f dist || true
 
-    # 如果没有任何 staged 变更，就正常结束，不报错
-    if git diff --cached --quiet; then
-      echo "No changes in dist, skip commit."
-      exit 0
-    fi
+          # 如果没有任何变更就正常结束
+          if git diff --cached --quiet; then
+            echo "No changes in dist, skip commit."
+            exit 0
+          fi
 
-    git commit -m "chore: update dist"
-    git push
+          git commit -m "chore: update dist"
+          git push
