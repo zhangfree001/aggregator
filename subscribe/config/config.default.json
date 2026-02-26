@@ -1,7 +1,38 @@
 {
-  "domains": [],
+  "domains": [
+    {
+      "name": "raw-source",
+      "sub": [
+        "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/all_sub.txt"
+      ],
+      "domain": "",
+      "enable": true,
+      "rename": "",
+      "include": "",
+      "exclude": "",
+      "push_to": ["default"],
+      "ignorede": true,
+      "liveness": true,
+      "rate": 2.5,
+      "count": 2,
+      "coupon": "",
+      "secure": false,
+      "renew": {
+        "account": [],
+        "plan_id": 0,
+        "package": "",
+        "method": 1,
+        "coupon_code": "",
+        "chatgpt": {
+          "enable": false,
+          "regex": "",
+          "operate": "IN"
+        }
+      }
+    }
+  ],
   "crawl": {
-    "enable": true,
+    "enable": false,
     "exclude": "",
     "threshold": 1,
     "singlelink": true,
@@ -14,69 +45,13 @@
       "include": "",
       "exclude": ""
     },
-    "telegram": {
-      "enable": false,
-      "pages": 1,
-      "exclude": "",
-      "users": {
-        "channel": {
-          "include": "",
-          "exclude": "",
-          "config": { "rename": "" },
-          "push_to": []
-        }
-      }
-    },
-    "twitter": {
-      "enable": false,
-      "users": {
-        "username": {
-          "enable": false,
-          "num": 30,
-          "include": "",
-          "exclude": "",
-          "config": { "rename": "" },
-          "push_to": []
-        }
-      }
-    },
-    "github": {
-      "enable": false,
-      "pages": 2,
-      "push_to": ["default"],
-      "exclude": "",
-      "spams": []
-    },
-    "google": {
-      "enable": false,
-      "exclude": "",
-      "limits": 100,
-      "notinurl": [],
-      "push_to": []
-    },
-    "yandex": {
-      "enable": false,
-      "exclude": "",
-      "within": 3,
-      "pages": 1,
-      "notinurl": [],
-      "push_to": []
-    },
+    "telegram": { "enable": false, "pages": 1, "exclude": "", "users": { "channel": { "include": "", "exclude": "", "config": { "rename": "" }, "push_to": [] } } },
+    "google": { "enable": false, "exclude": "", "limits": 100, "notinurl": [], "push_to": [] },
+    "yandex": { "enable": false, "exclude": "", "within": 3, "pages": 1, "notinurl": [], "push_to": [] },
+    "github": { "enable": false, "pages": 1, "push_to": [], "exclude": "", "spams": [] },
+    "twitter": { "enable": false, "users": { "username": { "enable": false, "num": 30, "include": "", "exclude": "", "config": { "rename": "" }, "push_to": [] } } },
     "repositories": [],
-    "pages": [
-      {
-        "enable": true,
-        "url": "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/all_sub.txt",
-        "include": "",
-        "exclude": "",
-        "multiple": true,
-        "placeholder": "",
-        "start": 1,
-        "end": 1,
-        "config": { "rename": "" },
-        "push_to": ["default"]
-      }
-    ],
+    "pages": [],
     "scripts": []
   },
   "groups": {
