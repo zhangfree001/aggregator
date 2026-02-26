@@ -41,7 +41,7 @@
       }
     },
     "github": {
-      "enable": true,
+      "enable": false,
       "pages": 2,
       "push_to": ["default"],
       "exclude": "",
@@ -66,7 +66,7 @@
     "pages": [
       {
         "enable": true,
-        "url": "https://raw.githubusercontent.com/mermeroo/V2RAY-CLASH-BASE64-Subscription.Links/master/README.md",
+        "url": "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/all_sub.txt",
         "include": "",
         "exclude": "",
         "multiple": true,
