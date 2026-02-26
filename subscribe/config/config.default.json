@@ -42,8 +42,8 @@
     },
     "github": {
       "enable": true,
-      "pages": 1,
-      "push_to": [default],
+      "pages": 2,
+      "push_to": ["default"],
       "exclude": "",
       "spams": []
     },
@@ -74,7 +74,7 @@
         "start": 1,
         "end": 1,
         "config": { "rename": "" },
-        "push_to": [default]
+        "push_to": ["default"]
       }
     ],
     "scripts": []
