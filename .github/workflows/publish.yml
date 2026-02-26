@@ -27,6 +27,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate
+        env:
+          LOCAL_BASEDIR: dist
         run: |
           mkdir -p dist
           cp subscribe/config/config.default.json "$RUNNER_TEMP/my-config.json"
