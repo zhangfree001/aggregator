@@ -3,7 +3,7 @@
     {
       "name": "raw-source",
       "sub": [
-        "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/all_sub.txt"
+        "https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/clash/all.yml"
       ],
       "domain": "",
       "enable": true,
