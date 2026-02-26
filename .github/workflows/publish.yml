@@ -30,8 +30,16 @@ jobs:
         env:
           LOCAL_BASEDIR: dist
         run: |
+          set -eux
           mkdir -p dist
           cp subscribe/config/config.default.json "$RUNNER_TEMP/my-config.json"
+
+          echo "===== USING CONFIG PATH ====="
+          ls -al subscribe/config
+          echo "===== USING CONFIG CONTENT ====="
+          cat "$RUNNER_TEMP/my-config.json"
+          echo "==============================="
+          
           python subscribe/process.py -s "$RUNNER_TEMP/my-config.json"
           ls -al dist || true
 
