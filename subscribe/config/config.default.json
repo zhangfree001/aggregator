@@ -17,7 +17,7 @@
       "exclude": "",
       "push_to": ["default"],
       "ignorede": true,
-      "liveness": false,
+      "liveness": true,
       "rate": 2.5,
       "count": 10,
       "coupon": "",
